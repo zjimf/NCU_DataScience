@@ -1,35 +1,56 @@
 # To Ensemble And Beyond
 
-## Overview
+## Kaggle
 
-This document details an experiment aimed at predicting gender within a dataset through sentiment analysis and various classifiers. The study assesses the performance of different data processing methods and machine learning models, with a focus on the impact of feature engineering on model performance.
+[Boy or Girl 2024 new](https://www.kaggle.com/competitions/boy-or-girl-2024-new)
 
 ## Introduction
 
-The experiment employs a range of preprocessing methods and a stacking classifier combining decision trees, XGBoost, and logistic regression. The objective is to optimize prediction outcomes through ensemble learning strategies.
+The experiment focused on gender prediction using sentiment analysis and an ensemble learning strategy. It evaluated the effects of feature engineering on model performance and utilized a stacking classifier combining decision trees, XGBoost, and logistic regression to enhance prediction accuracy.
 
-## Dataset
+## Research Method
 
-The dataset contains 423 records, encompassing variables like basic personal information, physiological characteristics, social behaviors, and self-expression modes. Key variables include gender, star sign, phone operating system, height, weight, sleepiness level, IQ, number of Facebook friends, daily YouTube usage, and a self-introduction text.
+![Research](../Images/Research.png)
 
-## Methodology
+### Preprocessing
 
-- **Preprocessing:**
-  - Removal of outliers in features like height, weight, number of Facebook friends, and YouTube watch duration.
-  - Imputation of missing values using mean for numerical features and mode for categorical features.
-  - Application of One-Hot Encoding for categorical variables.
-  - Utilization of TF-IDF for text data transformation.
-  - Use of SMOTETomek for handling data imbalance.
-- **Classifiers:**
-  - Decision Tree, XGBoost, and Logistic Regression individually, and combined in a Stacking Classifier.
-  - Evaluation of model performance through accuracy, F1 score, ROC AUC, and other metrics.
+- **Remove Outlier & Data Imputation:** Removes outliers in height, weight, fb_friends, and yt columns and imputes missing values with mean or mode
+  ![Outlier](../Images/Outlier.png)
+
+- **One-Hot:** converting categorical values into binary columns for each category.
+
+- **TF-IDF:** converts the self_intro text column into numerical features using TF-IDF vectorization, limiting to the top 100 features.
+  ![TF-IDF](../Images/TF-IDF.png)
+
+The overlap in training and test set distributions suggests that the model may generalize well from training to testing data.
+
+- **SMOTE+TOMEK:** The overlap in training and test set distributions suggests that the model may generalize well from training to testing data.
+  ![SMOTETOMEK](../Images/SMOTETOMEK.jpg)
+
+### Model
+
+![Model](../Images/Model.png)
+The superior performance of DT+XGBoost with LR model can be attributed to several factors:
+
+- **Diversity:** Combining DT and XGBoost introduces a variety of decision-making processes and learning patterns, which can capture a broader range of data complexities.
+- **Complementarity:** DT might capture certain aspects of the data, while XGBoost could be capturing other aspects. Together, they provide a more comprehensive understanding of the data.
+- **Error Correction:** If DT overfits or XGBoost underfits, the other can compensate, improving overall performance.
+- **Meta Learning:** Logistic Regression as a meta-learner can effectively weigh the predictions from the base models, fine-tuning the final decision boundary.
 
 ## Results
 
-- The stacking model combining Decision Tree and XGBoost with Logistic Regression as the meta-model achieved the highest accuracy.
-- Outlier removal, imputation, One-Hot Encoding, and TF-IDF transformation were essential in enhancing model performance.
-- The Stacking Classifier approach demonstrated superior predictive performance across various evaluation metrics.
+![Result](../Images/Result.png)
 
-## Conclusion
+- **Targeted Precision:** "Girl" class exhibits high precision, indicating specific accuracy in its identification.
+- **Broad Recall:** "Boy" class shows high recall, capturing a large proportion of its instances.
+- **Balanced Accuracy:** F1-score for "Boy" is higher, showing a well-rounded precision-recall balance.
+- **Consistent Performance:** Micro-average scores are uniform, revealing consistent instance-level accuracy.
+  Overall Efficacy: Macro-average scores are robust, denoting effective performance across classes.
 
-Effective data preprocessing and the strategic use of ensemble learning significantly improved gender prediction accuracy. The study underscores the importance of feature engineering and model selection in machine learning tasks related to human behavior and characteristics.
+## Acknowledge
+
+- Thank you teacher for giving us so many teaching materials and for being so attentive in class.
+- Thank you to the team members for staying up many nights to make this assignment.
+- Thank God, we got number one.
+
+![Kaggle](../Images/kaggle.png)
