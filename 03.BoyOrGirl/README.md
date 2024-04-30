@@ -25,6 +25,7 @@ The experiment focused on gender prediction using sentiment analysis and an ense
 The overlap in training and test set distributions suggests that the model may generalize well from training to testing data.
 
 - **SMOTE+TOMEK:** The overlap in training and test set distributions suggests that the model may generalize well from training to testing data.
+
   ![SMOTETOMEK](../Images/SMOTETOMEK.jpg)
 
 ### Model
