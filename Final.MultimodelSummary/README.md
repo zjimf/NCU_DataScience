@@ -47,7 +47,7 @@ We chose the paper "Exploiting Pseudo Image Captions for Multimodal Summarizatio
 3. **Feature Fusion**: Integrate text and image features using VisualBERT model.
 4. **Summary Generation**: Generate final text summary using BART decoder.
 
-   ![Method](../Images/Bart.png)
+   ![Method](../Images/BART.png)
 
 ### Evaluation Metrics
 
